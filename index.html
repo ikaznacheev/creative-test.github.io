@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>In-Read Template</title>
+	<link rel="icon" type="image/ico" href="https://digitalcases.ru/in-image/test-page/favicon.ico" sizes="16x16">
+	<link rel="icon" type="image/ico" href="https://digitalcases.ru/in-image/test-page/favicon.ico" sizes="32x32">
+	<link rel="stylesheet" href="https://digitalcases.ru/in-image/test-page/styles/style.css">
+	<script type="text/javascript" src="https://digitalcases.ru/in-image/test-page/scripts/gsap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+</head>
+<style type="text/css">
+  body{
+		font-family: "Montserrat", sans-serif !important;
+	}
+  #contentWrapper{
+    margin-top:0;
+    padding-top:40px;
+		background: #fff;
+		max-width: 900px;
+  }
+  #picWrapper img{
+    max-height:50vh;
+    object-fit:contain;
+  }
+	.r-container__background{
+		pointer-events: all !important;
+	}
+	.menu__button{
+		outline: 0;
+		border: 0;
+	}
+	.content{
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
+    line-height: 1.7;
+	}
+	.header{
+		display: none !important;
+	}
+</style>
+<body>
+		<header id="header" class="header">
+		<div id="halo"></div>
+		<img src="https://digitalcases.ru/in-image/test-page/images/logo.svg" alt="" id="logo">
+		<nav id="menu" class="menu">
+			<span class="menu__title">
+				Выбрать формат
+			</span>
+			<button type="button" id="button" class="button menu__button">
+				<span class="button__text" data-bar="">In-Image Frame</span>
+				<span class="button__arrow">▶</span>
+			</button>
+			<div class="menu__list">
+				<ul class="list__ul">
+					<li class="list__li" data-bar="N">In-Image Frame</li>
+					<li class="list__li" data-bar="Y">In-Image Bar</li>
+				</ul>
+				<div id="closeButton" class="closeButton">×</div>
+			</div>
+			<span class="menu__text" id="menuText">Мобильные форматы можно посмотреть с мобильного устройства</span>
+		</nav>
+	</header>
+	<div id="contentWrapper">
+		<h1>Тестовая страница</h1>
+		<div id="date"></div>
+		<div id="picWrapper">
+			<img class="mt-target" src="pic2.jpg" alt="">
+		</div>
+		<div id="article">
+			<div id="spacer"></div>
+			<div class="interscroll"></div>
+			<div class="content"><p>В настоящее время видимая яркость звезд зависит от двух факторов — фактической светимости и удаленности от Земли. Для наиболее близких звезд мы можем измерить и видимую яркость, и расстояние, что позволяет вычислить их светимость. И наоборот, зная светимость звезд в других галактиках, мы можем вычислить расстояние до них, измерив их яркость. Хаббл утверждал, что определенные типы звезд всегда имеют одну и ту же светимость в тех случаях, когда они расположены от нас на достаточно близких расстояниях, позволяющих провести измерения. Обнаружив подобные звезды в другой галактике, мы можем предполагать, что они имеют ту же светимость. Это позволит нам вычислить расстояния до иной галактики. Если мы проделаем это для нескольких звезд в какой-то галактике и полученные значения совпадут, то можно быть вполне уверенным в полученных нами результатах.</p>
+
+			<p>Подобным образом Эдвин Хаббл сумел вычислить расстояния до девяти разных галактик. Сегодня мы знаем, что наша галактика лишь одна из нескольких сотен миллиардов наблюдаемых в современные телескопы галактик, каждая из которых может содержать сотни миллиардов звезд. Мы живем в галактике, поперечник которой около ста тысяч световых лет. Она медленно вращается, и звезды в ее спиральных рукавах делают примерно один оборот вокруг ее центра за сто миллионов лет. Наше Солнце представляет собой самую обычную, средних размеров желтую звезду близ внешнего края одного из спиральных рукавов. Несомненно, мы прошли долгий путь со времен Аристотеля и Птолемея, когда Земля считалась центром вселенной.</p></div>
+		</div>
+	</div>
+	<script>
+	var word = "index.html";
+	var link = window.location.href.replace(word, '');
+  var today = new Date();
+  var dd = ("0" + today.getDate()).slice(-2);
+  var mm = ("0" + (today.getMonth() + 1)).slice(-2);
+  var yyyy = today.getFullYear();
+  today = dd + "." + mm + "." + yyyy;
+  document.querySelector('#date').innerText = today;
+
+		function initOutstream(targets){
+			var outstreamElement = document.createElement('div');
+			outstreamElement.classList.add('in-read');
+			outstreamElement.classList.add('in-read--1');
+			outstreamElement.style.height='0';
+
+			var blockContent = `
+				<div class="in-read--creative in-read--creative--1">
+					<iframe src="banner/index.html" frameborder="0" class="in-read--iframe"></iframe>
+				</div>
+			`;
+  			outstreamElement.innerHTML = blockContent;
+  			targets.insertAdjacentElement("afterend", outstreamElement);
+				var width=outstreamElement.offsetWidth;
+  			var iframe = outstreamElement.querySelector('.in-read--creative--1 iframe');
+				iframe.style.height=((width / 16) * 9) +'px';
+
+				function closePlayer(){
+					document.querySelector('.in-read--1').remove();
+				}
+				function openPlayer(){
+					outstreamElement.style.height=((width / 16) * 9) +'px';
+				}
+
+				document.querySelector('iframe').addEventListener('load',function(){
+					setTimeout(function(){
+						document.querySelector('.in-read--creative--1 iframe').contentWindow.frames.postMessage('mtCanvasLoaded','*');
+						document.querySelector('.in-read--creative--1 iframe').contentWindow.frames.postMessage('mtCanvasStarted','*');
+					},500);
+					openPlayer();
+				});
+				window.addEventListener('message',function(e){
+					if(e.data == 'mtCanvasClose'){
+						closePlayer();
+					}
+				});
+		}
+		window.addEventListener('load',function(){
+			var targets=document.querySelector('.content p');
+			console.log(targets);
+			if(targets){
+				initOutstream(targets);
+			}
+		});
+
+	</script>
+	<style>
+		.in-read{
+			width: 100%;
+			margin-top:20px;
+			margin-bottom:20px;
+			transition: .4s;
+			position: relative;
+		}
+		.in-read--creative{
+			overflow:hidden;
+			display:flex;
+			position:relative;
+			width:100%;
+			height:100%;
+		}
+		.in-read--creative.wow{
+			overflow:visible !important;
+		}
+		.in-read iframe{
+			width: 100%;
+			height: calc(100% - 20px);
+			position: absolute;
+			left: 0;
+			bottom:0;
+			border: 0;
+		}
+		.in-read .wow iframe{
+			transform: scale(1.24);
+		}
+		.in-read--creative.wow .in-read--top{
+			background:transparent !important;
+		}
+		.in-read--top{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 15px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			padding:0 5px;
+			transition: .3s;
+			pointer-events: none;
+			opacity: 0;
+			z-index: 5;
+			background:#fff;
+		}
+		.in-read--top.active{
+			pointer-events: auto;
+			opacity: 1;
+		}
+		.in-read__reklam{
+			font-size: 14px;
+		}
+		.in-read__close{
+			width:15px;
+			height:15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="%23000000" height="800px" width="800px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve"><g><g><polygon points="512,59.076 452.922,0 256,196.922 59.076,0 0,59.076 196.922,256 0,452.922 59.076,512 256,315.076 452.922,512 512,452.922 315.076,256 "/></g></g></svg>');
+			cursor: pointer;
+		}
+	</style>
+</script>
+</body>
+</html>
